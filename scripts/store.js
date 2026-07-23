@@ -45,7 +45,7 @@ function renderCart(){
   if(!cart.length){body.innerHTML=`<div class="empty-state"><span>◇</span><h3>Votre nuit commence ici.</h3><p>Votre panier est encore vide.</p></div>`;footer.innerHTML='';return}
   body.innerHTML=cart.map(item=>{const p=byId(item.id);return `<div class="cart-item"><div class="mini-art">${productArt(p,'')}</div><div><h3>${p.name}</h3><p>${p.category}<br>${p.material}</p><div class="item-controls"><button data-qty="${p.id}" data-delta="-1">−</button><span>${item.qty}</span><button data-qty="${p.id}" data-delta="1">+</button></div></div><div><button class="item-remove" data-remove="${p.id}" aria-label="Retirer">×</button><p>${money(p.price*item.qty)}</p></div></div>`}).join('');
   const total=cart.reduce((sum,item)=>sum+byId(item.id).price*item.qty,0);
-  footer.innerHTML=`<div class="subtotal"><span>Sous-total</span><strong>${money(total)}</strong></div><button class="button" data-checkout>Commander sur WhatsApp <span>↗</span></button><p class="shipping-note">Livraison en Tunisie · Commande au +216 48 090 291</p>`;
+  footer.innerHTML=`<div class="subtotal"><span>Sous-total</span><strong>${money(total)}</strong></div><button class="button" data-checkout>Commander sur WhatsApp <span>↗</span></button><p class="shipping-note">Livraison en Tunisie · Commande au +216 52 653 088</p>`;
 }
 
 function renderWishlist(){
@@ -95,7 +95,7 @@ document.addEventListener('click',event=>{
     const lines=cart.map(item=>{const p=byId(item.id);return `• ${p.name} × ${item.qty} — ${money(p.price*item.qty)}`});
     const total=cart.reduce((sum,item)=>sum+byId(item.id).price*item.qty,0);
     const message=['Bonjour Rara Noctis, je souhaite commander :','',...lines,'',`Total : ${money(total)}`].join('\n');
-    window.open(`https://wa.me/21648090291?text=${encodeURIComponent(message)}`,'_blank','noopener');
+    window.open(`https://wa.me/21652653088?text=${encodeURIComponent(message)}`,'_blank','noopener');
   }
 });
 
